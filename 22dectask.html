@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+<form id="Achievers IT Form">
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName">
+    <span id="firstNameError" class="error"></span><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <span id="passwordError" class="error"></span><br>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword">
+    <span id="confirmPasswordError" class="error"></span><br>
+
+    <input type="button" value="Submit" onclick="validateForm()">
+
+</form>
+
+<script>
+    function validateForm() {
+        
+        document.getElementById("firstNameError").innerHTML = "";
+        document.getElementById("passwordError").innerHTML = "";
+        document.getElementById("confirmPasswordError").innerHTML = "";
+
+       
+        var firstName = document.getElementById("firstName").value;
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+       
+        if (firstName === "") {
+            document.getElementById("firstNameError").innerHTML = "First name is required";
+            return;
+        }
+
+        if (password === "") {
+            document.getElementById("passwordError").innerHTML = "Password is required";
+            return;
+        }
+
+        if (confirmPassword === "") {
+            document.getElementById("confirmPasswordError").innerHTML = "Confirm Password is required";
+            return;
+        }
+
+        
+        if (password !== confirmPassword) {
+            document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match";
+            return;
+        }
+
+        
+        alert("Form submitted successfully!");
+    }
+</script>
+
+</body>
+</html>
